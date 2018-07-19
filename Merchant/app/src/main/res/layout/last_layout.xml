@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageButton"
+        android:layout_width="130dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_launcher_background"/>
+
+    <TextView
+        android:id="@+id/product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="150dp"
+        android:hint="Product : " />
+
+    <TextView
+        android:id="@+id/textviewone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="80dp"
+        android:hint="Text View One" />
+
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textviewthree"
+        android:layout_alignStart="@+id/product"
+
+        android:hint="Phone : " />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textviewone"
+        android:layout_below="@+id/textviewone"
+        android:layout_marginTop="5dp"
+        android:hint="Text View Two"
+        android:id="@+id/textviewtwo"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textviewfour"
+        android:layout_alignStart="@+id/product"
+
+        android:text="Quantity : " />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textviewtwo"
+        android:layout_below="@+id/textviewtwo"
+        android:layout_marginTop="5dp"
+        android:hint="Text View Three"
+        android:id="@+id/textviewthree"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/product"
+        android:layout_alignTop="@+id/textviewfour"
+        android:text="Quality : " />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textviewthree"
+        android:layout_below="@+id/textviewthree"
+        android:layout_marginTop="5dp"
+        android:hint="Text View Four"
+        android:id="@+id/textviewfour"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textviewfive"
+        android:layout_toStartOf="@+id/textviewthree"
+        android:text="QuantityIn : " />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textviewfour"
+        android:layout_below="@+id/textviewfour"
+        android:layout_marginTop="5dp"
+        android:hint="Text View Five"
+        android:id="@+id/textviewfive"/>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textviewsix"
+        android:layout_toStartOf="@+id/textviewthree"
+        android:text="Username : " />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textviewfive"
+        android:layout_below="@+id/textviewfive"
+        android:layout_marginTop="5dp"
+        android:hint="Text View Six"
+        android:id="@+id/textviewsix"/>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageButton"
+        android:layout_alignEnd="@+id/phone"
+        android:text="Status : " />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textviewsix"
+        android:layout_below="@+id/textviewsix"
+        android:layout_marginTop="5dp"
+        android:hint="Text View Seven"
+        android:id="@+id/textviewseven"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textviewseven"
+        android:layout_below="@+id/textviewseven"
+        android:layout_marginTop="5dp"
+        android:hint="Text View Eight"
+        android:visibility="invisible"
+        android:id="@+id/textvieweight"/>
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

@@ -84,12 +84,12 @@ stay();
                                 Toast.makeText(this, "enter email", Toast.LENGTH_SHORT).show();
                                 stay();
                             }
-                            else{
+                            else{if(text1.getText().length()!=0&&text2.getText().length()!=0&&text3.getText().length()!=0&&text4.getText().length()!=0&&text5.getText().length()!=0&&text6.getText().length()!=0) {
                                 final String organization = text1.getText().toString().trim();
                                 final String username = text2.getText().toString().trim();
                                 final String email = text3.getText().toString().trim();
-                                final String  phone=text4.getText().toString().trim();
-                                final String password=text5.getText().toString().trim();
+                                final String phone = text4.getText().toString().trim();
+                                final String password = text5.getText().toString().trim();
                                 progressDialog.setMessage("Registering user..");
                                 progressDialog.show();
 
@@ -115,9 +115,9 @@ stay();
                                     @Override
                                     protected Map<String, String> getParams() throws AuthFailureError {
                                         Map<String, String> params = new HashMap<>();
-                                        params.put("username",username);
+                                        params.put("username", username);
                                         params.put("organization", organization);
-                                        params.put("password",password);
+                                        params.put("password", password);
                                         params.put("phone", phone);
                                         params.put("email", email);
                                         return params;
@@ -126,8 +126,11 @@ stay();
                                 //RequestQueue requestQueue = Volley.newRequestQueue(this);
                                 //requestQueue.add(stringRequest);
                                 RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
-
                             }
+                                Intent k=new Intent(Main2Activity.this,MainActivity.class);
+                                startActivity(k);
+                            }
+
                         }
                     }
 

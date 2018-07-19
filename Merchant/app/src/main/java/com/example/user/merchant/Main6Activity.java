@@ -67,6 +67,8 @@ public class Main6Activity extends AppCompatActivity {
     TextView result,result2;
     ImageView image;
     Button button;
+    String trail;
+    int h;
     private ProgressDialog pd;
     BufferedInputStream is;
     @Override
@@ -96,22 +98,40 @@ public class Main6Activity extends AppCompatActivity {
 
 
         Intent k = getIntent();
-        String orderid = k.getStringExtra("orderid");
-        Log.e("orderid",orderid);
+        final String orderid = k.getStringExtra("orderid");
         String producttype = k.getStringExtra("producttype");
-        String organization = k.getStringExtra("organization");
-        Integer orgid = k.getIntExtra("orgid",0);
-        StrictMode.setThreadPolicy((new StrictMode.ThreadPolicy.Builder().permitNetwork().build()));
+        final String organization = k.getStringExtra("organization");
+        final Integer orgid = k.getIntExtra("orgid",0);
+        final String orgsdetails=k.getStringExtra("orgsdetails");
+        final String status=k.getStringExtra("status");
 
-    button.setOnClickListener(new View.OnClickListener() {
+        trail="*"+orgid+"#";
+        if (orgsdetails.contains(trail)) {
+             h=12;
+            System.out.print(h);
+        }
+        else{
+            h=30; }
+        StrictMode.setThreadPolicy((new StrictMode.ThreadPolicy.Builder().permitNetwork().build()));
+if(h==30) { button.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent l=new Intent(Main6Activity.this,Main7Activity.class);
+            Intent l = new Intent(Main6Activity.this, Main7Activity.class);
+            l.putExtra("orderid",orderid);
+            l.putExtra("organization",organization);
+            l.putExtra("orgid",orgid);
+            l.putExtra("status",status);
+            l.putExtra("orgsdetails",orgsdetails);
+
+
+
             startActivity(l);
         }
     });
 
-
+}else{
+    button.setText("Already Requested");
+}
     }
 
     public   void getSqlDetails() {
@@ -119,7 +139,7 @@ public class Main6Activity extends AppCompatActivity {
         String orderid = k.getStringExtra("orderid");
         Log.e("order",orderid);
 
-        String url = "http://192.168.1.12/farmer1.php?orderid=" + orderid;
+        String url = "http://prathyushateja710.000webhostapp.com/connection/farmer1.php?orderid=" + orderid;
         getDetails();
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 url,
@@ -137,7 +157,7 @@ public class Main6Activity extends AppCompatActivity {
                                 String price = jsonobject.getString("price");
                                 String dateofpost=jsonobject.getString("dateofpost");
                                 String phone=jsonobject.getString("phone");
-                                result.setText(" Description -" + description + "\n Quantity -" + quantity + "\n Quantityin -" + quantityin + "\n Quality -" + quality + "\n Price -" + price+"\n DateOfPost-"+dateofpost+"\n Phone -"+phone);
+                                result.setText(" Description -" + description + "\n Quantity -" + quantity + "\n Quantityin -" + quantityin + "\n Quality -" + quality + "\n Price -" + price+"\n Date-Of-Post-"+dateofpost+"\n Phone -"+phone);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -167,7 +187,7 @@ public class Main6Activity extends AppCompatActivity {
         Intent m = getIntent();
         String orderid = m.getStringExtra("orderid");
 
-        String url = "http://192.168.1.12/downloadimage.php?orderid="+orderid;
+        String url = "http://prathyushateja710.000webhostapp.com/connection/downloadimage.php?orderid="+orderid;
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 url,
                 new Response.Listener<String>() {
@@ -247,6 +267,40 @@ public class Main6Activity extends AppCompatActivity {
             }
         }
     }
+
+
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+
+            case R.id.menuLogout:
+                SharedPrefManager.getInstance(this).logout();
+                finish();
+                startActivity(new Intent(this, MainActivity.class));
+                break;
+            case R.id.menuOrders:
+                Intent j=getIntent();
+                Integer orgid = j.getIntExtra("orgid", 0);
+                String searchkey="*"+orgid+"#";
+                Intent m=new Intent(Main6Activity.this,Main8Activity.class);
+                m.putExtra("searchkey",searchkey);
+
+                startActivity(m);
+                break;
+
+
+        }
+        return  super.onOptionsItemSelected(item);
+    }
+
 }
 
 

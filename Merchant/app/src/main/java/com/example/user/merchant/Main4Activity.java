@@ -79,7 +79,7 @@ public class Main4Activity extends AppCompatActivity {
         String text=Text.getText().toString();
         //connection
         try{
-            URL url= new URL("http://192.168.1.12/get_product.php?product="+text);
+            URL url= new URL("http://prathyushateja710.000webhostapp.com/connection/get_product.php?product="+text);
             HttpURLConnection con=(HttpURLConnection)url.openConnection();
             con.setRequestMethod("GET");
             is=new BufferedInputStream(con.getInputStream());
@@ -143,7 +143,13 @@ public class Main4Activity extends AppCompatActivity {
                 startActivity(new Intent(this, MainActivity.class));
                 break;
             case R.id.menuOrders:
+                Intent j=getIntent();
+                Integer orgid = j.getIntExtra("orgid", 0);
+                String searchkey="*"+orgid+"#";
+                Intent m=new Intent(Main4Activity.this,Main8Activity.class);
+                m.putExtra("searchkey",searchkey);
 
+                startActivity(m);
                 break;
 
 
@@ -192,30 +198,14 @@ public class Main4Activity extends AppCompatActivity {
                     String organization = R.getStringExtra("organization");
                     Integer orgid = R.getIntExtra("orgid", 0);
                     String product=R.getStringExtra("product");
-
-
-                    //Bitmap bitmap=((BitmapDrawable)finalViewHolder.image.getDrawable()).getBitmap();
-                    //ByteArrayOutputStream bs=new ByteArrayOutputStream();
-                    //bitmap.compress(Bitmap.CompressFormat.PNG,50,bs);
                     Intent j=new Intent(Main4Activity.this,Main5Activity.class);
-                    //Drawable drawable=finalViewHolder.image.getDrawable();
-
-
-                    // j.putExtra("image", bs.toByteArray());
                     j.putExtra("producttype", finalViewHolder.text.getText().toString());
                     j.putExtra("organization",organization);
                     j.putExtra("orgid",orgid);
                     j.putExtra("product",product);
-
                     startActivity(j);
-
-
-
-                }
-
-
-
-            });
+                    }
+                    });
 
             return r;
         }

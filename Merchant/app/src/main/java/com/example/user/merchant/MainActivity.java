@@ -52,8 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent h=new Intent(MainActivity.this,Main3Activity.class);
             h.putExtra("organization",SharedPrefManager.getInstance(this).getOrganisationname());
             h.putExtra("orgid",SharedPrefManager.getInstance(this).getOrgid());
-            Log.e("organisation",SharedPrefManager.getInstance(this).getOrganisationname());
-            Log.e("orgid", String.valueOf(SharedPrefManager.getInstance(this).getOrgid()));
+
             startActivity(h);
             return;
         }
@@ -97,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         i.putExtra("organization",SharedPrefManager.getInstance(getApplicationContext()).getOrganisationname());
 
                         i.putExtra("orgid",SharedPrefManager.getInstance(getApplicationContext()).getOrgid());
+
                         startActivity(i);
 
                         finish();

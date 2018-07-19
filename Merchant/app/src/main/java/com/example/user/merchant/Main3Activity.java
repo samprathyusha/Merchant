@@ -46,7 +46,7 @@ public class Main3Activity extends AppCompatActivity {
     private ListView listView;
 
 
-    String urladdress="http://192.168.1.12/image.php";
+    String urladdress="http://prathyushateja710.000webhostapp.com/connection/image.php";
     String[] name;
     String[] imagepath;
 
@@ -91,6 +91,14 @@ public class Main3Activity extends AppCompatActivity {
                 startActivity(new Intent(this, MainActivity.class));
                 break;
             case R.id.menuOrders:
+                Intent j=getIntent();
+                Integer orgid = j.getIntExtra("orgid", 0);
+                String searchkey="*"+orgid+"#";
+                Intent m=new Intent(Main3Activity.this,Main8Activity.class);
+                m.putExtra("searchkey",searchkey);
+                m.putExtra("orgid",SharedPrefManager.getInstance(this).getOrgid());
+
+                startActivity(m);
 
                 break;
 
@@ -193,16 +201,13 @@ public class Main3Activity extends AppCompatActivity {
 
                     Intent R = getIntent();
                     String organization = R.getStringExtra("organization");
-                    Log.e("1",organization);
-
                     Integer orgid = R.getIntExtra("orgid", 0);
-                    Log.e("2", String.valueOf(orgid));
-
                     Intent j=new Intent(Main3Activity.this,Main4Activity.class);
 
                     j.putExtra("product", finalViewHolder.text.getText().toString());
-                    j.putExtra("organiztion",organization);
+                    j.putExtra("organization",organization);
                     j.putExtra("orgid",orgid);
+
 
 
 
